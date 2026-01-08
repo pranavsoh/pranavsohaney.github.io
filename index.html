@@ -59,7 +59,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -69,16 +69,16 @@
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 3rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
@@ -95,6 +95,34 @@
 
         .nav-links a:hover {
             color: var(--primary);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* Hero Section */
@@ -693,19 +721,64 @@
 
         @media (max-width: 768px) {
             nav {
-                padding: 1.5rem 5%;
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                font-size: 0.85rem;
             }
 
             .nav-links {
-                gap: 1.5rem;
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 3rem 5%;
+                gap: 2rem;
+                transition: left 0.4s;
+            }
+
+            .nav-links.active {
+                left: 0;
             }
 
             .nav-links a {
-                font-size: 0.8rem;
+                font-size: 1.2rem;
+            }
+
+            .menu-toggle {
+                display: flex;
             }
 
             .hero {
-                padding: 6rem 5% 4rem;
+                padding: 5rem 5% 3rem;
+                min-height: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-text p {
+                font-size: 0.95rem;
+            }
+
+            .profile-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .profile-image {
+                width: 210px;
+                height: 210px;
             }
 
             .projects-grid {
@@ -719,6 +792,18 @@
 
             body {
                 cursor: auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skill-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .timeline-item {
+                padding: 2rem;
             }
         }
 
@@ -776,8 +861,13 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo">Namaste, I'm Pranav Sohaney</div>
-        <ul class="nav-links">
+        <div class="logo">Pranav Sohaney</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -921,7 +1011,7 @@
                 </div>
             </div>
             <div class="timeline-item reveal">
-                <div class="timeline-date">2020 – 2021</div>
+                <div class="timeline-date">2019 – 2021</div>
                 <h3 class="timeline-title">Higher Secondary Education (Class XII – CBSE)</h3>
                 <div class="timeline-company">Shri Vinayak Academy International Senior Secondary School</div>
                 <div class="timeline-description">
@@ -980,109 +1070,6 @@
         </div>
     </section>
 
-    
-<!-- Projects Section -->
-<section class="projects" id="projects">
-    <div class="section-header reveal">
-        <h2 class="section-title">PROJECTS</h2>
-        <p class="section-subtitle">Explore my featured data analysis work</p>
-    </div>
-
-    <div class="projects-grid">
-
-        <!-- Myntra Review Analysis -->
-        <div class="project-card reveal">
-            <div class="project-image">🛍️</div>
-            <div class="project-content">
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">NLP</span>
-                </div>
-                <h3 class="project-title">Myntra Review Analysis</h3>
-                <p class="project-description">
-                    Customer review sentiment analysis using Python to understand user feedback and product perception.
-                </p>
-                <a href="https://github.com/pranavsoh/myntra_review_project" target="_blank" class="project-link">
-                    View on GitHub →
-                </a>
-            </div>
-        </div>
-
-        <!-- Spam Classifier -->
-        <div class="project-card reveal">
-            <div class="project-image">📩</div>
-            <div class="project-content">
-                <div class="project-tags">
-                    <span class="tag">Machine Learning</span>
-                    <span class="tag">Classification</span>
-                </div>
-                <h3 class="project-title">Spam Classifier</h3>
-                <p class="project-description">
-                    Machine learning model to classify spam vs non-spam messages using text preprocessing and classification algorithms.
-                </p>
-                <a href="https://github.com/pranavsoh/spamClassifier" target="_blank" class="project-link">
-                    View on GitHub →
-                </a>
-            </div>
-        </div>
-
-        <!-- Vendor Performance Analysis -->
-        <div class="project-card reveal">
-            <div class="project-image">🏪</div>
-            <div class="project-content">
-                <div class="project-tags">
-                    <span class="tag">SQL</span>
-                    <span class="tag">Power BI</span>
-                </div>
-                <h3 class="project-title">Vendor Performance Analysis</h3>
-                <p class="project-description">
-                    End-to-end analysis of vendor sales, profitability, and inventory to identify underperforming vendors.
-                </p>
-                <a href="https://github.com/pranavsoh/vendor-performance-analysis" target="_blank" class="project-link">
-                    View on GitHub →
-                </a>
-            </div>
-        </div>
-
-        <!-- Pizza Sales Analysis -->
-        <div class="project-card reveal">
-            <div class="project-image">🍕</div>
-            <div class="project-content">
-                <div class="project-tags">
-                    <span class="tag">SQL</span>
-                    <span class="tag">Reporting</span>
-                </div>
-                <h3 class="project-title">MastCrust Pizza Sales Analysis</h3>
-                <p class="project-description">
-                    SQL-based sales analysis project to identify top-selling products, revenue trends, and customer behavior.
-                </p>
-                <a href="https://github.com/pranavsoh/MastCrust-Pizza-Co.-SQL-Project-Report-compressed" target="_blank" class="project-link">
-                    View on GitHub →
-                </a>
-            </div>
-        </div>
-
-        <!-- Airline Operations Power BI -->
-        <div class="project-card reveal">
-            <div class="project-image">✈️</div>
-            <div class="project-content">
-                <div class="project-tags">
-                    <span class="tag">Power BI</span>
-                    <span class="tag">Dashboard</span>
-                </div>
-                <h3 class="project-title">Airline Operations & Passenger Analysis</h3>
-                <p class="project-description">
-                    Interactive Power BI dashboard analyzing passenger traffic, flights, distance, and airport-level trends.
-                </p>
-                <a href="https://github.com/pranavsoh/airportproject.BI/tree/main" target="_blank" class="project-link">
-                    View on GitHub →
-                </a>
-            </div>
-        </div>
-
-    </div>
-</section>
-
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="section-header reveal">
@@ -1109,7 +1096,7 @@
                 <div class="contact-item reveal">
                     <div class="contact-icon">📄</div>
                     <h3>Resume</h3>
-                    <a href="https://www.overleaf.com/project/693d5b36df1bf79da2b418c6" target="_blank">Download CV</a>
+                    <a href="https://www.overleaf.com/project/693d4107fe39d7d8c5a7909a" target="_blank">Download CV</a>
                 </div>
             </div>
         </div>
@@ -1126,6 +1113,23 @@
     </footer>
 
     <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Custom Cursor
         const cursor = document.querySelector('.cursor');
         const cursorFollower = document.querySelector('.cursor-follower');
